@@ -1,6 +1,6 @@
 package com.allstate.speedyclaimsserver.control;
 
-import com.allstate.speedyclaimsserver.domain.Customers;
+import com.allstate.speedyclaimsserver.domain.Customer;
 import com.allstate.speedyclaimsserver.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -19,7 +19,7 @@ public class CustomersController {
     private CustomerService customerService;
 
     @GetMapping()
-    public List<Customers> getAll(){
+    public List<Customer> getAll(){
         return customerService.getAll();
     }
 }

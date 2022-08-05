@@ -1,34 +1,46 @@
 package com.allstate.speedyclaimsserver.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Customers {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int id;
+    Integer id;
 
+    @Column(name="policy_number")
     int policyNumber;
+
+    @Column(name="first_name")
     String firstName;
+
+    @Column(name="sur_name")
     String surName;
+
+    @Column(name="address_city")
     String addressCity;
+
+    @Column(name="address_street1")
     String addressStreet1;
+
+    @Column(name="address_street2")
     String addressStreet2;
+
+    @Column(name="address_post_code")
     String addressPostCode;
 
+    @OneToMany(cascade = CascadeType.ALL)
     List<Claim> claims;
 
-    public Customers() {
+    public Customer() {
     }
 
-    public Customers(int id, int policyNumber, String firstName, String surName,
-                     String addressCity, String addressStreet1, String addressStreet2,
-                     String addressPostCode, List<Claim> claims) {
+    public Customer(Integer id, int policyNumber, String firstName, String surName, String addressCity,
+                    String addressStreet1, String addressStreet2, String addressPostCode, List<Claim> claims) {
         this.id = id;
         this.policyNumber = policyNumber;
         this.firstName = firstName;
@@ -40,11 +52,11 @@ public class Customers {
         this.claims = claims;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -70,10 +82,6 @@ public class Customers {
 
     public void setSurName(String surName) {
         this.surName = surName;
-    }
-
-    public List<Claim> getClaims() {
-        return claims;
     }
 
     public String getAddressCity() {
@@ -106,6 +114,10 @@ public class Customers {
 
     public void setAddressPostCode(String addressPostCode) {
         this.addressPostCode = addressPostCode;
+    }
+
+    public List<Claim> getClaims() {
+        return claims;
     }
 
     public void setClaims(List<Claim> claims) {
