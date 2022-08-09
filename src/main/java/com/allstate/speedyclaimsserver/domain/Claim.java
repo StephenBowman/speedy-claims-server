@@ -47,7 +47,7 @@ public class Claim {
     @Column(name="animal_breed")
     String animalBreed;
 
-    @ManyToOne
+    @ManyToOne()
     Customer customer;
 
     public Claim() {
@@ -174,5 +174,17 @@ public class Claim {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
+    }
+
+    public String getCustomerName(){
+        return this.customer.getName();
+    }
+
+    public String getCustomerFirstName(){
+        return this.customer.getFirstName();
+    }
+
+    public int getCustomerPolicy(){
+        return this.customer.getPolicyNumber();
     }
 }

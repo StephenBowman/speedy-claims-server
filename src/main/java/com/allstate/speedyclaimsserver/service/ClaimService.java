@@ -7,4 +7,5 @@ import java.util.List;
 public interface ClaimService {
 
     List<Claim> getAll();
+    List<Claim> findByClaimStatus(String status);
 }

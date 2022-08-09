@@ -18,4 +18,9 @@ public class ClaimServiceImpl implements ClaimService{
 
         return claimRepository.findAll();
     }
+
+    @Override
+    public List<Claim> findByClaimStatus(String status) {
+        return claimRepository.findByClaimStatus(status);
+    }
 }

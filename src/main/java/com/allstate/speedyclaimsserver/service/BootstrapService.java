@@ -26,19 +26,19 @@ public class BootstrapService {
 
         if (customerRepository.findAll().size() == 0) {
 
-            Customer customer1 = new Customer(null, 908444322, "Paul", "Orange", "San Francisco", "Bay St", "Bay Square",
-                    "60774", null);
-            Customer customer2 = new Customer(null, 909876546, "Jane", "Blue", "Denver", "Black Hill", "Silver Bay",
-                    "40384", null);
-            Customer customer3 = new Customer(null, 907689098, "Sharon", "Green", "New York", "Any Street", "Any City",
-                    "80633", null);
+            Customer customer1 = new Customer(null, 908444111, "Carol", "Murphy", "Los Angeles", "Box St", "Box Square",
+                    "60114", null);
+            Customer customer2 = new Customer(null, 901116546, "Mike", "Spectre", "Denver", "Beach Hill", "Beach Plazza",
+                    "42224", null);
+            Customer customer3 = new Customer(null, 902289218, "Angela", "Purle", "New York", "Dee Stree", "Bronx",
+                    "83453", null);
 
-            Claim claim1 = new Claim(null, "Auto", LocalDate.now(), 450d, "Paint Damage", "shunt to rear", "Open", "Opel", "Astra",
-                    "2018", null, null, customer1);
-            Claim claim2 = new Claim(null, "Property", LocalDate.now(), 250d, "Storm damage", "burst pipe", "Open", null, null,
+            Claim claim1 = new Claim(null, "Auto", LocalDate.now(), 400d, "Paint Damage", "shunt to front", "Rejected", "Vauxhall", "Corsa",
+                    "2017", null, null, customer1);
+            Claim claim2 = new Claim(null, "Property", LocalDate.now(), 300d, "Roof damage", "Gutter damage", "Open", null, null,
                     null, null, null, customer2);
-            Claim claim3 = new Claim(null, "Pet", LocalDate.now(), 300d, "Vaccinations", "usual", "Closed", null, null,
-                    null, "dog", "Collie", customer3);
+            Claim claim3 = new Claim(null, "Pet", LocalDate.now(), 200d, "operation", "usual", "Closed", null, null,
+                    null, "dog", "Boxer", customer3);
 
             List<Claim> cl1 = new ArrayList<>();
             cl1.add(claim1);
