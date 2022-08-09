@@ -26,18 +26,18 @@ public class BootstrapService {
 
         if (customerRepository.findAll().size() == 0) {
 
-            Customer customer1 = new Customer(null, 908768765, "James", "Black", "New York", "May St", "May Lane",
-                    "60664", null);
-            Customer customer2 = new Customer(null, 907654345, "Stephen", "Smith", "Miami", "Fountain St", "Blue Beach",
-                    "80884", null);
-            Customer customer3 = new Customer(null, 908554221, "Mary", "Green", "Chicago", "Trump Tower", "Penthouse",
-                    "70633", null);
+            Customer customer1 = new Customer(null, 908444322, "Paul", "Orange", "San Francisco", "Bay St", "Bay Square",
+                    "60774", null);
+            Customer customer2 = new Customer(null, 909876546, "Jane", "Blue", "Denver", "Black Hill", "Silver Bay",
+                    "40384", null);
+            Customer customer3 = new Customer(null, 907689098, "Sharon", "Green", "New York", "Any Street", "Any City",
+                    "80633", null);
 
-            Claim claim1 = new Claim(null, "Auto", LocalDate.now(), 450d, "Fender Bump", "shunt to rear", "Open", "Ford", "Focus",
+            Claim claim1 = new Claim(null, "Auto", LocalDate.now(), 450d, "Paint Damage", "shunt to rear", "Open", "Opel", "Astra",
                     "2018", null, null, customer1);
-            Claim claim2 = new Claim(null, "Property", LocalDate.now(), 250d, "Water damage", "burst pipe", "Open", null, null,
+            Claim claim2 = new Claim(null, "Property", LocalDate.now(), 250d, "Storm damage", "burst pipe", "Open", null, null,
                     null, null, null, customer2);
-            Claim claim3 = new Claim(null, "Pet", LocalDate.now(), 300d, "Operation", "broken leg", "Open", null, null,
+            Claim claim3 = new Claim(null, "Pet", LocalDate.now(), 300d, "Vaccinations", "usual", "Closed", null, null,
                     null, "dog", "Collie", customer3);
 
             List<Claim> cl1 = new ArrayList<>();

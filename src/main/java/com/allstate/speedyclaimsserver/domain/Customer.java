@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name="customer")
 public class Customer {
 
     @Id
@@ -18,8 +19,8 @@ public class Customer {
     @Column(name="first_name")
     String firstName;
 
-    @Column(name="sur_name")
-    String surName;
+    @Column(name="name")
+    String name;
 
     @Column(name="address_city")
     String addressCity;
@@ -39,12 +40,12 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Integer id, int policyNumber, String firstName, String surName, String addressCity,
+    public Customer(Integer id, int policyNumber, String firstName, String name, String addressCity,
                     String addressStreet1, String addressStreet2, String addressPostCode, List<Claim> claims) {
         this.id = id;
         this.policyNumber = policyNumber;
         this.firstName = firstName;
-        this.surName = surName;
+        this.name = name;
         this.addressCity = addressCity;
         this.addressStreet1 = addressStreet1;
         this.addressStreet2 = addressStreet2;
@@ -76,12 +77,12 @@ public class Customer {
         this.firstName = firstName;
     }
 
-    public String getSurName() {
-        return surName;
+    public String getName() {
+        return name;
     }
 
-    public void setSurName(String surName) {
-        this.surName = surName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getAddressCity() {

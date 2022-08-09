@@ -3,12 +3,11 @@ package com.allstate.speedyclaimsserver.control;
 import com.allstate.speedyclaimsserver.domain.Customer;
 import com.allstate.speedyclaimsserver.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -16,10 +15,26 @@ import java.util.List;
 public class CustomersController {
 
     @Autowired
-    private CustomerService customerService;
+    CustomerService customerService;
 
     @GetMapping()
-    public List<Customer> getAll(){
+    public List<Customer> getAll(@RequestParam(value="name", required=false) String name,
+                                 @RequestParam(value="policy", required=false) Integer policy){
+
+        if(name != null){
+            return customerService.findByName(name);
+        } else if(policy != null){
+            return customerService.findByPolicyNumber(policy);
+        }
         return customerService.getAll();
     }
+
+    @GetMapping("/volume")
+    public Map<String, String> getNumberOfCustomers(){
+        Integer volume = customerService.countCustomers();
+        Map<String, String> results = new HashMap<>();
+        results.put("volume", volume.toString());
+        return results;
+    }
+
 }

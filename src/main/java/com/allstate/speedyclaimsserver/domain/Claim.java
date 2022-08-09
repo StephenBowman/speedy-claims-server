@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name="claim")
 public class Claim {
 
     @Id
@@ -46,7 +47,7 @@ public class Claim {
     @Column(name="animal_breed")
     String animalBreed;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     Customer customer;
 
     public Claim() {
