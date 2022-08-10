@@ -18,7 +18,7 @@ public class CustomerDTO {
     String addressPostCode;
 
     public CustomerDTO(){
-        
+
     }
 
     public CustomerDTO(Customer customer){
