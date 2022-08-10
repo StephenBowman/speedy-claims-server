@@ -1,75 +1,54 @@
-package com.allstate.speedyclaimsserver.domain;
+package com.allstate.speedyclaimsserver.dtos;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.allstate.speedyclaimsserver.domain.Claim;
+import com.allstate.speedyclaimsserver.domain.Customer;
 
-import javax.persistence.*;
+import javax.persistence.Column;
 import java.time.LocalDate;
 
-@Entity
-@Table(name="claim")
-public class Claim {
+public class ClaimDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @Column(name="claim_type")
     String claimType;
-
-    @Column(name="claim_date")
     LocalDate claimDate;
-
-    @Column(name="estimated_amt")
     Double estimatedAmt;
-
-    @Column(name="claim_reason")
     String claimReason;
-
-    @Column(name="claim_description")
     String claimDescription;
-
-    @Column(name="claim_status")
     String claimStatus;
 
-
-    @Column(name="vehicle_make")
     String vehicleMake;
-
-    @Column(name="vehicle_model")
     String vehicleModel;
-
-    @Column(name="vehicle_year")
     String vehicleYear;
 
-
-    @Column(name="animal_type")
     String animalType;
-
-    @Column(name="animal_breed")
     String animalBreed;
 
-    @ManyToOne()
     Customer customer;
 
-    public Claim() {
+    public ClaimDTO(){}
+
+    public ClaimDTO(Claim claim){
+        this.claimType = claim.getClaimType();
+        this.claimDate = claim.getClaimDate();
+        this.estimatedAmt = claim.getEstimatedAmt();
+        this.claimReason = claim.getClaimReason();
+        this.claimDescription = claim.getClaimDescription();
+        this.claimStatus = claim.getClaimStatus();
+
+        this.vehicleMake = claim.getVehicleMake();
+        this.vehicleModel = claim.getVehicleModel();
+        this.vehicleYear = claim.getVehicleYear();
+
+        this.animalType = claim.getAnimalType();
+        this.animalBreed = claim.getAnimalBreed();
+
+        this.customer = claim.getCustomer();
     }
 
-    public Claim(Integer id, String claimType, LocalDate claimDate, Double estimatedAmt,
-                 String claimReason, String claimDescription, String claimStatus, String vehicleMake,
-                 String vehicleModel, String vehicleYear, String animalType, String animalBreed, Customer customer) {
-        this.id = id;
-        this.claimType = claimType;
-        this.claimDate = claimDate;
-        this.estimatedAmt = estimatedAmt;
-        this.claimReason = claimReason;
-        this.claimDescription = claimDescription;
-        this.claimStatus = claimStatus;
-        this.vehicleMake = vehicleMake;
-        this.vehicleModel = vehicleModel;
-        this.vehicleYear = vehicleYear;
-        this.animalType = animalType;
-        this.animalBreed = animalBreed;
-        this.customer = customer;
+    public Claim toClaim(){
+        return new Claim(null, claimType, claimDate, estimatedAmt, claimReason, claimDescription, claimStatus,
+                vehicleMake, vehicleModel, vehicleYear, animalType, animalBreed, customer);
     }
 
     public Integer getId() {
@@ -168,7 +147,6 @@ public class Claim {
         this.animalBreed = animalBreed;
     }
 
-    @JsonIgnore
     public Customer getCustomer() {
         return customer;
     }
@@ -177,15 +155,4 @@ public class Claim {
         this.customer = customer;
     }
 
-    public String getCustomerName(){
-        return this.customer.getName();
-    }
-
-    public String getCustomerFirstName(){
-        return this.customer.getFirstName();
-    }
-
-    public int getCustomerPolicy(){
-        return this.customer.getPolicyNumber();
-    }
 }

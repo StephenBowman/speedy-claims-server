@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ClaimRepository extends JpaRepository<Claim, Integer> {
+public interface ClaimRepository extends JpaRepository<Claim, Integer>{
 
     List<Claim> findByClaimStatus(String status);
 }
