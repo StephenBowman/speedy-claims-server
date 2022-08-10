@@ -11,5 +11,6 @@ public interface ClaimService {
 
     List<Claim> getAll();
     List<Claim> findByClaimStatus(String status);
-    Claim addClaim(ClaimDTO newClaim);
+    List<Claim> findByPolicyNumber(Integer policy);
+    Claim addClaim(ClaimDTO newClaim, Customer customer);
 }

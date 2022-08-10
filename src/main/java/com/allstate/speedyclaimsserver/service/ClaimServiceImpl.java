@@ -23,11 +23,18 @@ public class ClaimServiceImpl implements ClaimService{
 
     @Override
     public List<Claim> findByClaimStatus(String status) {
+
         return claimRepository.findByClaimStatus(status);
     }
 
     @Override
-    public Claim addClaim(ClaimDTO newClaim) {
+    public List<Claim> findByPolicyNumber(Integer policy) {
+        return (List<Claim>) claimRepository.findByPolicyNumber(policy);
+    }
+
+    @Override
+    public Claim addClaim(ClaimDTO newClaim, Customer customer) {
         return claimRepository.save(newClaim.toClaim());
     }
+
 }
