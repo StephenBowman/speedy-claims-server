@@ -2,6 +2,7 @@ package com.allstate.speedyclaimsserver.service;
 
 import com.allstate.speedyclaimsserver.data.CustomerRepository;
 import com.allstate.speedyclaimsserver.domain.Customer;
+import com.allstate.speedyclaimsserver.dtos.CustomerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +32,11 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public List<Customer> findByPolicyNumber(Integer policy) {
         return customerRepository.findByPolicyNumber(policy);
+    }
+
+    @Override
+    public Customer addCustomer(CustomerDTO newCustomer) {
+        return customerRepository.save(newCustomer.toCustomer());
     }
 
 }

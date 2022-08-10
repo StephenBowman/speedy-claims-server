@@ -1,6 +1,7 @@
 package com.allstate.speedyclaimsserver.control;
 
 import com.allstate.speedyclaimsserver.domain.Customer;
+import com.allstate.speedyclaimsserver.dtos.CustomerDTO;
 import com.allstate.speedyclaimsserver.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,11 @@ public class CustomersController {
         Map<String, String> results = new HashMap<>();
         results.put("volume", volume.toString());
         return results;
+    }
+
+    @PostMapping
+    public Customer newCustomer(@RequestBody CustomerDTO customerDTO){
+        return customerService.addCustomer(customerDTO);
     }
 
 }
