@@ -4,6 +4,7 @@ import com.allstate.speedyclaimsserver.domain.Customer;
 import com.allstate.speedyclaimsserver.dtos.CustomerDTO;
 
 import java.util.List;
+import java.util.Map;
 
 public interface CustomerService {
 
@@ -12,4 +13,5 @@ public interface CustomerService {
     List<Customer> findByName(String name);
     List<Customer> findByPolicyNumber(Integer policy);
     Customer addCustomer(CustomerDTO newCustomer);
+    Customer addClaim(Integer policy, Map<String, String> data);
 }

@@ -43,4 +43,11 @@ public class CustomersController {
         return customerService.addCustomer(customerDTO);
     }
 
+    @PutMapping("/{policyNumber}")
+    public Customer addClaim(@PathVariable("policyNumber") Integer policyNumber,
+                             @RequestBody Map<String, String> data){
+        return customerService.addClaim(policyNumber, data);
+    }
+
+
 }

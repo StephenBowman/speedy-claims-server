@@ -1,6 +1,7 @@
 package com.allstate.speedyclaimsserver.service;
 
 import com.allstate.speedyclaimsserver.data.CustomerRepository;
+import com.allstate.speedyclaimsserver.domain.Claim;
 import com.allstate.speedyclaimsserver.domain.Customer;
 import com.allstate.speedyclaimsserver.dtos.CustomerDTO;
 import com.allstate.speedyclaimsserver.exceptions.CustomerNotFoundException;
@@ -10,8 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.io.Console;
+import java.time.LocalDate;
+import java.util.*;
 
 @Service
 public class CustomerServiceImpl implements CustomerService{
@@ -72,6 +74,37 @@ public class CustomerServiceImpl implements CustomerService{
             logger.info("We are unable to save the new customer");
             throw new InvalidNewCustomerException("We are unable to save the new customer");
         }
+    }
+
+    @Override
+    public Customer addClaim(Integer policy, Map<String, String> data) {
+
+        List<Customer> customer = findByPolicyNumber(policy);
+        Claim clm = new Claim();
+        Customer c1 = customer.get(0);
+
+        if(c1 != null && data.containsKey("claimType")){
+            if(data.get("claimType").equalsIgnoreCase("Auto") ||
+                    data.get("claimType").equalsIgnoreCase("Property") ||
+                    data.get("claimType").equalsIgnoreCase("Pet")){
+                clm = new Claim(null, data.get("claimType"), LocalDate.now(),
+                        Double.parseDouble(data.get("estimatedAmt")), data.get("claimReason"), data.get("claimDescription"),
+                        data.get("claimStatus"), data.get("vehicleMake"), data.get("vehicleModel"),
+                        data.get("vehicleYear"), data.get("animalType"), data.get("animalBreed"), c1);
+            }else{
+                // throw exception
+            }
+
+            List<Claim> claimList = null;
+            if(c1.getClaims().isEmpty()){
+                claimList = new ArrayList<Claim>();
+            }else{
+                claimList = c1.getClaims();
+            }
+            claimList.add(clm);
+            c1.setClaims(claimList);
+        }
+        return customerRepository.save(c1);
     }
 
 }
