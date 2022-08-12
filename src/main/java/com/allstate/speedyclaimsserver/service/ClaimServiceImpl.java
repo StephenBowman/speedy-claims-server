@@ -2,12 +2,11 @@ package com.allstate.speedyclaimsserver.service;
 
 import com.allstate.speedyclaimsserver.data.ClaimRepository;
 import com.allstate.speedyclaimsserver.domain.Claim;
-import com.allstate.speedyclaimsserver.domain.Customer;
-import com.allstate.speedyclaimsserver.dtos.ClaimDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClaimServiceImpl implements ClaimService{
@@ -30,6 +29,16 @@ public class ClaimServiceImpl implements ClaimService{
     @Override
     public List<Claim> findByCustomerId(Integer customerId) {
         return (List<Claim>) claimRepository.findByCustomerId(customerId);
+    }
+
+    @Override
+    public Claim findByClaimId(Integer id) {
+        Optional<Claim> optionalClaim = claimRepository.findById(id);
+
+        if(optionalClaim.isPresent()){
+            return optionalClaim.get();
+        }
+        return null;
     }
 
 
