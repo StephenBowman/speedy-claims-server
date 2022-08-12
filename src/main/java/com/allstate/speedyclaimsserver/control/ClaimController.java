@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin
@@ -27,6 +28,12 @@ public class ClaimController {
     @GetMapping(value="/{id}", produces={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public Claim getById(@PathVariable("id") Integer id){
         return claimService.findByClaimId(id);
+    }
+
+    @PutMapping("/update/{id}")
+    public Claim updateClaim(@PathVariable("id") Integer claimId,
+                             @RequestBody Map<String, String> data){
+        return claimService.updateClaim(claimId, data);
     }
 
 }
