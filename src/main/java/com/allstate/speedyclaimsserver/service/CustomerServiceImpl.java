@@ -59,6 +59,16 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
+    public Customer getCustomerById(Integer id) {
+        Optional<Customer> optionalCustomer = customerRepository.findById(id);
+        if (optionalCustomer.isPresent()) {
+            return optionalCustomer.get();
+        }
+        logger.info("There is no customer with id: "+ id);
+        throw new CustomerNotFoundException("There is no customer with id: "+ id);
+    }
+
+    @Override
     public Customer addCustomer(CustomerDTO newCustomerDTO) {
         Customer customer = newCustomerDTO.toCustomer();
 
