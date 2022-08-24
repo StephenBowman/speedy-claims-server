@@ -36,7 +36,7 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public List<Customer> findByName(String name) {
         List<Customer> customer = customerRepository.findByName(name);
-
+        logger.info("URL Name "+ name);
         if(!customer.isEmpty()){
             return customer;
         }
