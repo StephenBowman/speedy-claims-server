@@ -45,17 +45,26 @@ public class CustomerServiceImpl implements CustomerService{
         //return customerRepository.findByName(name);
     }
 
-    @Override
-    public List<Customer> findByPolicyNumber(Integer policy) {
-        List<Customer> customer = customerRepository.findByPolicyNumber(policy);
+//    @Override
+//    public List<Customer> findByPolicyNumber(Integer policy) {
+//        List<Customer> customer = customerRepository.findByPolicyNumber(policy);
+//        if(!customer.isEmpty()){
+//            return customer;
+//        }
+//        logger.info("There is no customer with policy "+ policy);
+//        throw new CustomerNotFoundException("There is no customer with policy "+ policy);
+//
+//        //return customerRepository.findByPolicyNumber(policy);
+//    }
 
-        if(!customer.isEmpty()){
+    @Override
+    public Customer findByPolicyNumber(Integer policy) {
+        Customer customer = customerRepository.findByPolicyNumber(policy);
+        if(customer != null){
             return customer;
         }
         logger.info("There is no customer with policy "+ policy);
         throw new CustomerNotFoundException("There is no customer with policy "+ policy);
-
-        //return customerRepository.findByPolicyNumber(policy);
     }
 
     @Override
@@ -89,9 +98,9 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public Customer addClaim(Integer policy, Map<String, String> data) {
 
-        List<Customer> customer = findByPolicyNumber(policy);
+        Customer customer = findByPolicyNumber(policy);
         Claim clm = new Claim();
-        Customer c1 = customer.get(0);
+        Customer c1 = customer;
 
         if(c1 != null && data.containsKey("claimType")){
             if(data.get("claimType").equalsIgnoreCase("Auto") ||

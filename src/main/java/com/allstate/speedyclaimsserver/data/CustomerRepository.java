@@ -10,6 +10,7 @@ import java.util.List;
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
     public List<Customer> findByName(String name);
-    public List<Customer> findByPolicyNumber(Integer policy);
+    //public List<Customer> findByPolicyNumber(Integer policy);
+    public Customer findByPolicyNumber(Integer policy);
 
 }

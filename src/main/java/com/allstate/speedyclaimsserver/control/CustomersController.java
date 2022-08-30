@@ -27,9 +27,9 @@ public class CustomersController {
 
         if(name != null){
             return customerService.findByName(name);
-        } else if(policy != null){
-            return customerService.findByPolicyNumber(policy);
-        }
+        } //else if(policy != null){
+//            return customerService.findByPolicyNumber(policy);
+//        }
         return customerService.getAll();
     }
 
@@ -42,25 +42,24 @@ public class CustomersController {
     }
 
     @GetMapping(value ="/policy/{policy}", produces={MediaType.APPLICATION_JSON_VALUE})
-    public List<Customer> findByPolicyNumber(@PathVariable("policy") Integer policy) {
-        logger.info("In Mapping with Policy "+ policy);
+    public Customer findByPolicyNumber(@PathVariable("policy") Integer policy) {
         return customerService.findByPolicyNumber(policy);
     }
 
-    @GetMapping(value ="/name/{name}")
+    @GetMapping(value ="/name/{name}", produces={MediaType.APPLICATION_JSON_VALUE})
     public List<Customer> findByName(@PathVariable("name") String name) {
         return customerService.findByName(name);
     }
 
-    @GetMapping(value ="/{id}", produces={MediaType.APPLICATION_JSON_VALUE})
+    @GetMapping(value ="/{id}", produces={MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_VALUE})
     public Customer getById(@PathVariable("id") Integer id) {
         return customerService.getCustomerById(id);
     }
 
-    @PutMapping("/{policyNumber}")
-    public Customer addClaim(@PathVariable("policyNumber") Integer policyNumber,
+    @PutMapping("/{id}")
+    public Customer addClaim(@PathVariable("id") Integer id,
                              @RequestBody Map<String, String> data){
-        return customerService.addClaim(policyNumber, data);
+        return customerService.addClaim(id, data);
     }
 
     @PostMapping

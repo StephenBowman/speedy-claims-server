@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -27,7 +28,6 @@ public class ClaimServiceImpl implements ClaimService{
 
     @Override
     public List<Claim> findByClaimStatus(String status) {
-
         return claimRepository.findByClaimStatus(status);
     }
 
@@ -48,7 +48,7 @@ public class ClaimServiceImpl implements ClaimService{
 
     @Override
     public Claim updateClaim(Integer claimId, Map<String, String> data) {
-
+        logger.info("In Update Claim " + data.toString());
         ArrayList<String> validValues = new ArrayList<>(Arrays.asList("open", "in progress", "closed", "rejected"));
 
         Claim clmUpdate = findByClaimId(claimId);
@@ -68,6 +68,36 @@ public class ClaimServiceImpl implements ClaimService{
                 clmUpdate.setEstimatedAmt(Double.parseDouble(data.get("estimatedAmt")));
             }catch(NumberFormatException e){
                 throw new NumberFormatException("Invalid input for estimated amount, please enter numeric values");
+            }
+        }
+
+        if(data.containsKey("claimDate")){
+            if(data.get("claimDate") != null){
+                clmUpdate.setClaimDate(LocalDate.parse(data.get("claimDate")));
+            }
+        }
+
+        if(data.containsKey("claimReason")){
+            if(data.get("claimReason") != null) {
+                clmUpdate.setClaimReason(data.get("claimReason"));
+            }
+        }
+
+        if(data.containsKey("claimDescription")){
+            if(data.get("claimDescription") != null) {
+                clmUpdate.setClaimDescription(data.get("claimDescription"));
+            }
+        }
+
+        if(data.containsKey("animalType")){
+            if(data.get("animalType") != null) {
+                clmUpdate.setAnimalType(data.get("animalType"));
+            }
+        }
+
+        if(data.containsKey("animalBreed")){
+            if(data.get("animalBreed") != null) {
+                clmUpdate.setAnimalBreed(data.get("animalBreed"));
             }
         }
 

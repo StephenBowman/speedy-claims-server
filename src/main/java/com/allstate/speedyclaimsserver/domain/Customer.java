@@ -122,5 +122,20 @@ public class Customer {
     public void setClaims(List<Claim> claims) {
         this.claims = claims;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", policyNumber=" + policyNumber +
+                ", firstName='" + firstName + '\'' +
+                ", name='" + name + '\'' +
+                ", addressCity='" + addressCity + '\'' +
+                ", addressStreet1='" + addressStreet1 + '\'' +
+                ", addressStreet2='" + addressStreet2 + '\'' +
+                ", addressPostCode='" + addressPostCode + '\'' +
+                ", claims=" + claims +
+                '}';
+    }
 }
 

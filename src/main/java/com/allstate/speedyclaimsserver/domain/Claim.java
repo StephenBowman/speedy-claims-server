@@ -176,17 +176,18 @@ public class Claim {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
-    @JsonIgnore
+
     public String getCustomerName(){
         return this.customer.getName();
     }
-    @JsonIgnore
+
     public String getCustomerFirstName(){
         return this.customer.getFirstName();
     }
-    @JsonIgnore
+
     public int getCustomerPolicy(){
         return this.customer.getPolicyNumber();
     }
+
     //public Integer getCustomerId(){return this.customer.getId();};
 }

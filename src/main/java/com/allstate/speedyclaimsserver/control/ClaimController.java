@@ -30,6 +30,11 @@ public class ClaimController {
         return claimService.findByClaimId(id);
     }
 
+    @GetMapping(value="/status/{status}", produces={MediaType.APPLICATION_JSON_VALUE})
+    public List<Claim> findByClaimStatus(@PathVariable("status") String status){
+        return claimService.findByClaimStatus(status);
+    }
+
     @PutMapping("/update/{id}")
     public Claim updateClaim(@PathVariable("id") Integer claimId,
                              @RequestBody Map<String, String> data){

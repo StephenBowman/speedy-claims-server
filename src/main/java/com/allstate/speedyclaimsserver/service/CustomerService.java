@@ -11,7 +11,8 @@ public interface CustomerService {
     List<Customer> getAll();
     int countCustomers();
     List<Customer> findByName(String name);
-    List<Customer> findByPolicyNumber(Integer policy);
+    //List<Customer> findByPolicyNumber(Integer policy);
+    Customer findByPolicyNumber(Integer policy);
     Customer getCustomerById(Integer id);
     Customer addCustomer(CustomerDTO newCustomer);
     Customer addClaim(Integer policy, Map<String, String> data);
