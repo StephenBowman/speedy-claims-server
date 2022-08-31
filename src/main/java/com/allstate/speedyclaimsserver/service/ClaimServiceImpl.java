@@ -48,7 +48,6 @@ public class ClaimServiceImpl implements ClaimService{
 
     @Override
     public Claim updateClaim(Integer claimId, Map<String, String> data) {
-        logger.info("In Update Claim " + data.toString());
         ArrayList<String> validValues = new ArrayList<>(Arrays.asList("open", "in progress", "closed", "rejected"));
 
         Claim clmUpdate = findByClaimId(claimId);

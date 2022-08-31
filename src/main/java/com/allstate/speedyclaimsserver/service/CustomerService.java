@@ -16,4 +16,5 @@ public interface CustomerService {
     Customer getCustomerById(Integer id);
     Customer addCustomer(CustomerDTO newCustomer);
     Customer addClaim(Integer policy, Map<String, String> data);
+    Customer updatePolicyDetails(Integer customerId, Map<String, String> data);
 }

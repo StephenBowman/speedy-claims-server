@@ -126,4 +126,48 @@ public class CustomerServiceImpl implements CustomerService{
         return customerRepository.save(c1);
     }
 
+    @Override
+    public Customer updatePolicyDetails(Integer customerId, Map<String, String> data) {
+
+        Customer customerUpdate = getCustomerById(customerId);
+
+        if(data.containsKey("firstName")){
+            if(data.get("firstName") != null){
+                customerUpdate.setFirstName(data.get("firstName"));
+            }
+        }
+
+        if(data.containsKey("name")){
+            if(data.get("name") != null){
+                customerUpdate.setName(data.get("name"));
+            }
+        }
+
+        if(data.containsKey("addressStreet1")){
+            if(data.get("addressStreet1") != null){
+                customerUpdate.setAddressStreet1(data.get("addressStreet1"));
+            }
+        }
+
+        if(data.containsKey("addressStreet2")){
+            if(data.get("addressStreet2") != null){
+                customerUpdate.setAddressStreet2(data.get("addressStreet2"));
+            }
+        }
+
+        if(data.containsKey("addressCity")){
+            if(data.get("addressCity") != null){
+                customerUpdate.setAddressCity(data.get("addressCity"));
+            }
+        }
+
+        if(data.containsKey("addressPostCode")){
+            if(data.get("addressPostCode") != null){
+                customerUpdate.setAddressPostCode(data.get("addressPostCode"));
+            }
+        }
+
+        return customerRepository.save(customerUpdate);
+    }
+
 }

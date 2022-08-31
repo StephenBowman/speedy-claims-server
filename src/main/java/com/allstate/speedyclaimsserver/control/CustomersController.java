@@ -1,5 +1,6 @@
 package com.allstate.speedyclaimsserver.control;
 
+import com.allstate.speedyclaimsserver.domain.Claim;
 import com.allstate.speedyclaimsserver.domain.Customer;
 import com.allstate.speedyclaimsserver.dtos.CustomerDTO;
 import com.allstate.speedyclaimsserver.service.CustomerService;
@@ -60,6 +61,12 @@ public class CustomersController {
     public Customer addClaim(@PathVariable("id") Integer id,
                              @RequestBody Map<String, String> data){
         return customerService.addClaim(id, data);
+    }
+
+    @PutMapping("/update/{id}")
+    public Customer updatePolicyDetails(@PathVariable("id") Integer customerId,
+                             @RequestBody Map<String, String> data){
+        return customerService.updatePolicyDetails(customerId, data);
     }
 
     @PostMapping
