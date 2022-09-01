@@ -97,7 +97,6 @@ public class CustomerServiceImpl implements CustomerService{
 
     @Override
     public Customer addClaim(Integer policy, Map<String, String> data) {
-
         Customer customer = findByPolicyNumber(policy);
         Claim clm = new Claim();
         Customer c1 = customer;
