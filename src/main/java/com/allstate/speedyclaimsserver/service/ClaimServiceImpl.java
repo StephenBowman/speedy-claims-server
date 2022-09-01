@@ -100,6 +100,24 @@ public class ClaimServiceImpl implements ClaimService{
             }
         }
 
+        if(data.containsKey("vehicleMake")){
+            if(data.get("vehicleMake") != null) {
+                clmUpdate.setVehicleMake(data.get("vehicleMake"));
+            }
+        }
+
+        if(data.containsKey("vehicleModel")){
+            if(data.get("vehicleModel") != null) {
+                clmUpdate.setVehicleModel(data.get("vehicleModel"));
+            }
+        }
+
+        if(data.containsKey("vehicleYear")){
+            if(data.get("vehicleYear") != null) {
+                clmUpdate.setVehicleYear(data.get("vehicleYear"));
+            }
+        }
+
         return claimRepository.save(clmUpdate);
     }
 

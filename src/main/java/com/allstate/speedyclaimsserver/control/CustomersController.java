@@ -57,10 +57,10 @@ public class CustomersController {
         return customerService.getCustomerById(id);
     }
 
-    @PutMapping("/{id}")
-    public Customer addClaim(@PathVariable("id") Integer id,
+    @PutMapping("/claim/{policy}")
+    public Customer addClaim(@PathVariable("policy") Integer policy,
                              @RequestBody Map<String, String> data){
-        return customerService.addClaim(id, data);
+        return customerService.addClaim(policy, data);
     }
 
     @PutMapping("/update/{id}")
