@@ -12,5 +12,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     public List<Customer> findByName(String name);
     //public List<Customer> findByPolicyNumber(Integer policy);
     public Customer findByPolicyNumber(Integer policy);
+    public Customer getCustomerById(Integer id);
 
 }
