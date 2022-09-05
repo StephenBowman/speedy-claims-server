@@ -40,7 +40,6 @@ public class CustomerServiceImpl implements CustomerService{
         }
         logger.info("There is no customer with name "+ name);
         throw new CustomerNotFoundException("There is no customer with name "+ name);
-        //return customerRepository.findByName(name);
     }
 
 //    @Override

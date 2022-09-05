@@ -3,7 +3,6 @@ package com.allstate.speedyclaimsserver.service;
 import com.allstate.speedyclaimsserver.data.ClaimRepository;
 import com.allstate.speedyclaimsserver.domain.Claim;
 import com.allstate.speedyclaimsserver.exceptions.ClaimNotFoundException;
-import com.allstate.speedyclaimsserver.exceptions.InvalidNewCustomerException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,7 +32,14 @@ public class ClaimServiceImpl implements ClaimService{
 
     @Override
     public List<Claim> findByCustomerId(Integer customerId) {
-        return (List<Claim>) claimRepository.findByCustomerId(customerId);
+        List<Claim> claims = claimRepository.findByCustomerId(customerId);
+
+        if(!claims.isEmpty()){
+            return claims;
+        }
+
+        logger.info("There are no claims found for customer with  id " + customerId);
+        throw new ClaimNotFoundException("There are no claims found for customer with  id " + customerId);
     }
 
     @Override
