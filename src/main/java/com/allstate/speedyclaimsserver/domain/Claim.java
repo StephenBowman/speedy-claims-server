@@ -189,5 +189,4 @@ public class Claim {
         return this.customer.getPolicyNumber();
     }
 
-    //public Integer getCustomerId(){return this.customer.getId();};
 }

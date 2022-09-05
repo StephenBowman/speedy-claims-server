@@ -1,10 +1,6 @@
 package com.allstate.speedyclaimsserver.dtos;
 
-import com.allstate.speedyclaimsserver.domain.Claim;
 import com.allstate.speedyclaimsserver.domain.Customer;
-
-import javax.persistence.Column;
-import java.sql.Array;
 import java.util.ArrayList;
 
 public class CustomerDTO {

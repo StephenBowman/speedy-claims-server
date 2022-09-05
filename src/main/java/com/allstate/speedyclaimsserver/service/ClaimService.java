@@ -4,7 +4,6 @@ import com.allstate.speedyclaimsserver.domain.Claim;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 public interface ClaimService {
 

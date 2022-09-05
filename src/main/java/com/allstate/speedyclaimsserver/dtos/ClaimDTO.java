@@ -2,8 +2,6 @@ package com.allstate.speedyclaimsserver.dtos;
 
 import com.allstate.speedyclaimsserver.domain.Claim;
 import com.allstate.speedyclaimsserver.domain.Customer;
-
-import javax.persistence.Column;
 import java.time.LocalDate;
 
 public class ClaimDTO {
