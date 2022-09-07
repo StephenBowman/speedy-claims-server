@@ -4,6 +4,7 @@ import com.allstate.speedyclaimsserver.data.CustomerRepository;
 import com.allstate.speedyclaimsserver.domain.Claim;
 import com.allstate.speedyclaimsserver.domain.Customer;
 import com.allstate.speedyclaimsserver.dtos.CustomerDTO;
+import com.allstate.speedyclaimsserver.exceptions.ClaimAddFailException;
 import com.allstate.speedyclaimsserver.exceptions.CustomerNotFoundException;
 import com.allstate.speedyclaimsserver.exceptions.InvalidNewCustomerException;
 import org.slf4j.Logger;
@@ -107,7 +108,8 @@ public class CustomerServiceImpl implements CustomerService{
                         data.get("claimStatus"), data.get("vehicleMake"), data.get("vehicleModel"),
                         data.get("vehicleYear"), data.get("animalType"), data.get("animalBreed"), c1);
             }else{
-                // throw exception
+                logger.info("Invalid claim type entered");
+                throw new ClaimAddFailException("Invalid claim type entered");
             }
 
             List<Claim> claimList = null;
